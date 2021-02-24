@@ -14,7 +14,8 @@ class Runner:
         - run
         - submit
     """
-    def __init__(self, *, solution, location, load_input, save_output, validate_and_score_output):
+    def __init__(self, *, solution, location, load_input, save_output, validate_and_score_output,
+                 report_all_scores=False):
         """
         :param solution: A solution function
         :type solution: function
@@ -26,11 +27,14 @@ class Runner:
         :type save_output: function
         :param validate_and_score_output: A function that validates and scores output
         :type validate_and_score_output: function
+        :param report_all_scores: If `True` it will print scores for every submit, even if they are not the best
+        :type report_all_scores: bool
         """
         self.solution = solution
         self.load_input = load_input
         self.save_output = save_output
         self.validate_and_score_output = validate_and_score_output
+        self.report_all_scores = report_all_scores
 
         self.input_folder = None
         self.output_folder = None
@@ -126,9 +130,8 @@ class Runner:
 
             if not os.path.exists(output_path):
                 self.save_output(output_path, output)
-        else:
-            pass
-            # print(f'{max_score}, {score}')
+        elif self.report_all_scores:
+            print(f'Obtained score {score} (best score is {max_score})')
 
     def _collect_max_score(self):
         """ Collects currently max score by checking at output filenames
