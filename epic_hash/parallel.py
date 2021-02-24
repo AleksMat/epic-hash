@@ -24,7 +24,7 @@ def parallelize(function, input, runner, param_list, workers=None):
     """
     process_num = len(param_list)
 
-    if workers == 1:
+    if workers == 1 or process_num == 1:
         for params in tqdm(param_list, total=process_num):
             function(input, runner, *params)
 
