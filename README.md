@@ -23,7 +23,7 @@ pip install . -e
 
 ## How To
 
-An example, how to use the package, is in `practice_2020` folder. The procedure is the following:
+An example, how to use the package, is in [`2020/practice`](https://github.com/AleksMat/hashcode-solutions/tree/master/2020/practice) folder. The procedure is the following:
 
 1. At the beginning of the competition someone puts input files into `input` folder and pushes to git.
 2. Someone implements utility functions for reading input, writing output and validating and scoring output. In the example functions are implemented in `solution_utils.py` script.
